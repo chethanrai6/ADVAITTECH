@@ -10,10 +10,7 @@ export default function Footer({ onOpenQuote }) {
           <div>
             <a href="#" className="brand-logo" style={{ marginBottom: '16px', display: 'inline-flex' }}>
               <div className="logo-mark">
-                <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 4L36 32H28L20 18L12 32H4L20 4Z" fill="#1E65FF" />
-                  <path d="M20 14L28 28H22L20 24.5L18 28H12L20 14Z" fill="#FFFFFF" />
-                </svg>
+                <img src="/advait_logo.png" alt="Advait Logo" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
               </div>
               <div className="logo-text-group">
                 <span className="brand-name" style={{ color: '#FFFFFF' }}>Advait</span>

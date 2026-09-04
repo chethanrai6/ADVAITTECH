@@ -80,9 +80,7 @@ export default function WhyChooseUs({ onOpenQuote }) {
             <h3>BIG<br />POSSIBILITIES</h3>
           </div>
           <div className="why-banner-logo">
-            <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 4L36 32H28L20 18L12 32H4L20 4Z" fill="#FFFFFF" />
-            </svg>
+            <img src="/advait_logo.png" alt="Advait Logo" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
             <span>Advait</span>
           </div>
         </div>
