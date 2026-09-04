@@ -32,7 +32,7 @@ export default function IndustryCategories({ selectedCategory, onSelectCategory 
     <section id="industries" className="categories-section">
       <div className="container">
         {/* Section Header with Carousel Controls */}
-        <div className="categories-header">
+        <div className="categories-header reveal-slide-up">
           <div>
             <span className="section-tag">WE SERVE</span>
             <h2 className="section-heading">Websites for Every Business</h2>
@@ -51,13 +51,14 @@ export default function IndustryCategories({ selectedCategory, onSelectCategory 
 
         {/* Categories Grid / Horizontal Scroll */}
         <div className="categories-grid" ref={carouselRef}>
-          {categories.map((cat) => {
+          {categories.map((cat, idx) => {
             const IconComp = cat.icon;
             const isSelected = selectedCategory === cat.id;
+            const staggerClass = `stagger-${(idx % 6) + 1}`;
             return (
               <div 
                 key={cat.id} 
-                className={`category-card ${isSelected ? 'active' : ''}`}
+                className={`category-card reveal-zoom ${staggerClass} ${isSelected ? 'active' : ''}`}
                 onClick={() => onSelectCategory(cat.id)}
               >
                 <div className="category-icon">

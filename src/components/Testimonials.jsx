@@ -42,7 +42,7 @@ export default function Testimonials() {
     <section className="testimonials-section">
       <div className="container">
         {/* Section Header with Carousel Arrows */}
-        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '40px' }}>
+        <div className="reveal-slide-up" style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '40px' }}>
           <div>
             <span className="section-tag">TESTIMONIALS</span>
             <h2 className="section-heading">What Our Clients Say</h2>
@@ -59,7 +59,7 @@ export default function Testimonials() {
         </div>
 
         {/* Testimonial Card */}
-        <div className="testimonial-card">
+        <div className="testimonial-card reveal-zoom">
           <div className="quote-mark">“</div>
           <p className="testimonial-text">{activeTestimonial.quote}</p>
 

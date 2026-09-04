@@ -39,7 +39,7 @@ export default function Services({ onOpenServiceDetail, onOpenQuote }) {
     <section id="services" className="services-section">
       <div className="container services-layout">
         {/* Intro Block */}
-        <div className="services-intro-card">
+        <div className="services-intro-card reveal-slide-left">
           <span className="section-tag">OUR SERVICES</span>
           <h2 className="section-heading">Everything You Need to Grow Online</h2>
           <p className="section-subheading" style={{ marginBottom: '24px' }}>
@@ -53,10 +53,11 @@ export default function Services({ onOpenServiceDetail, onOpenQuote }) {
 
         {/* Services Cards Grid */}
         <div className="services-grid">
-          {services.map((srv) => {
+          {services.map((srv, idx) => {
             const IconComp = srv.icon;
+            const staggerClass = `stagger-${idx + 1}`;
             return (
-              <div key={srv.id} className="service-card">
+              <div key={srv.id} className={`service-card reveal-slide-up ${staggerClass}`}>
                 <div>
                   <div className="service-icon-box">
                     <IconComp size={26} />

@@ -85,7 +85,7 @@ export default function Pricing({ onSelectPlan }) {
     <section id="pricing" className="pricing-section">
       <div className="container">
         {/* Header & Toggle */}
-        <div className="pricing-header-row">
+        <div className="pricing-header-row reveal-slide-up">
           <div>
             <span className="section-tag">SIMPLE PRICING</span>
             <h2 className="section-heading">Choose the Right Plan for Your Business</h2>
@@ -110,14 +110,15 @@ export default function Pricing({ onSelectPlan }) {
 
         {/* Pricing Cards Grid */}
         <div className="pricing-grid">
-          {plans.map((plan) => {
+          {plans.map((plan, idx) => {
             const IconComp = plan.icon;
             const price = billingCycle === 'one-time' ? plan.priceOneTime : plan.priceMonthly;
+            const staggerClass = `stagger-${idx + 1}`;
 
             return (
               <div 
                 key={plan.id} 
-                className={`pricing-card ${plan.featured ? 'featured' : ''}`}
+                className={`pricing-card reveal-zoom ${staggerClass} ${plan.featured ? 'featured' : ''}`}
               >
                 {plan.featured && (
                   <div className="popular-badge">{plan.popularTag}</div>

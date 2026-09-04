@@ -39,7 +39,7 @@ export default function WhyChooseUs({ onOpenQuote }) {
     <section id="about" className="why-section">
       <div className="container why-grid">
         {/* Left Content */}
-        <div>
+        <div className="reveal-slide-left">
           <span className="section-tag">WHY CHOOSE ADVAIT</span>
           <h2 className="section-heading">A Partner in Your Business Growth</h2>
           <p className="section-subheading" style={{ marginBottom: '24px' }}>
@@ -55,8 +55,9 @@ export default function WhyChooseUs({ onOpenQuote }) {
           <div className="why-features-grid">
             {features.map((feat, idx) => {
               const IconComp = feat.icon;
+              const staggerClass = `stagger-${idx + 1}`;
               return (
-                <div key={idx} className="why-feature-box">
+                <div key={idx} className={`why-feature-box reveal-slide-up ${staggerClass}`}>
                   <div className="why-feature-icon">
                     <IconComp size={20} />
                   </div>
@@ -69,7 +70,7 @@ export default function WhyChooseUs({ onOpenQuote }) {
         </div>
 
         {/* Right Banner Visual */}
-        <div className="why-banner-wrapper">
+        <div className="why-banner-wrapper reveal-slide-right">
           <img 
             src="/assets/mountain_banner.png" 
             alt="Small Businesses Big Possibilities" 

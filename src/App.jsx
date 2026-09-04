@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import IndustryCategories from './components/IndustryCategories';
@@ -20,6 +20,26 @@ export default function App() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll(
+      '.reveal-slide-up, .reveal-slide-left, .reveal-slide-right, .reveal-zoom, .reveal-fade'
+    );
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleOpenQuoteWithPlan = (plan) => {
     setSelectedPlan(plan);

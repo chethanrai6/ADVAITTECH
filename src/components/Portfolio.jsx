@@ -103,7 +103,7 @@ export default function Portfolio({ selectedCategory, onSelectCategory, onSelect
     <section id="portfolio" className="projects-section">
       <div className="container">
         {/* Header & Filter Tabs */}
-        <div>
+        <div className="reveal-slide-up">
           <span className="section-tag">OUR WORK</span>
           <h2 className="section-heading">Recent Projects</h2>
           <p className="section-subheading" style={{ marginBottom: '24px' }}>
@@ -111,7 +111,7 @@ export default function Portfolio({ selectedCategory, onSelectCategory, onSelect
           </p>
         </div>
 
-        <div className="projects-header">
+        <div className="projects-header reveal-slide-up">
           <div className="project-tabs">
             {tabs.map(tab => (
               <button
@@ -132,50 +132,53 @@ export default function Portfolio({ selectedCategory, onSelectCategory, onSelect
 
         {/* Projects Grid */}
         <div className="projects-grid">
-          {filteredProjects.map((project) => (
-            <div 
-              key={project.id} 
-              className="project-card"
-              onClick={() => onSelectProject(project)}
-            >
-              <div className="project-thumb">
-                <img src={project.img} alt={project.title} />
-                <div className="project-overlay">
-                  <div style={{ display: 'flex', gap: '8px' }}>
-                    <span className="btn-primary" style={{ padding: '8px 14px', fontSize: '0.8rem' }}>
-                      <Eye size={14} /> Preview
-                    </span>
+          {filteredProjects.map((project, idx) => {
+            const staggerClass = `stagger-${(idx % 6) + 1}`;
+            return (
+              <div 
+                key={project.id} 
+                className={`project-card reveal-zoom ${staggerClass}`}
+                onClick={() => onSelectProject(project)}
+              >
+                <div className="project-thumb">
+                  <img src={project.img} alt={project.title} />
+                  <div className="project-overlay">
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <span className="btn-primary" style={{ padding: '8px 14px', fontSize: '0.8rem' }}>
+                        <Eye size={14} /> Preview
+                      </span>
+                      <a 
+                        href={project.liveUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="btn-white"
+                        style={{ padding: '8px 14px', fontSize: '0.8rem', color: 'var(--text-dark)' }}
+                      >
+                        <ExternalLink size={14} /> Live Demo
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="project-info">
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <h3 className="project-title">{project.title}</h3>
                     <a 
                       href={project.liveUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="btn-white"
-                      style={{ padding: '8px 14px', fontSize: '0.8rem', color: 'var(--text-dark)' }}
+                      title="Open live project"
+                      style={{ color: 'var(--primary)', padding: '2px' }}
                     >
-                      <ExternalLink size={14} /> Live Demo
+                      <ExternalLink size={16} />
                     </a>
                   </div>
+                  <span className="project-category">{project.category}</span>
                 </div>
               </div>
-              <div className="project-info">
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <h3 className="project-title">{project.title}</h3>
-                  <a 
-                    href={project.liveUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    title="Open live project"
-                    style={{ color: 'var(--primary)', padding: '2px' }}
-                  >
-                    <ExternalLink size={16} />
-                  </a>
-                </div>
-                <span className="project-category">{project.category}</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

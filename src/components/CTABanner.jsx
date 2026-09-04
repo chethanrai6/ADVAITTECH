@@ -4,7 +4,7 @@ import { Send, ArrowRight, MessageSquare } from 'lucide-react';
 export default function CTABanner({ onOpenQuote, onOpenWhatsApp }) {
   return (
     <div className="container" style={{ paddingBottom: '80px' }}>
-      <div className="cta-banner">
+      <div className="cta-banner reveal-slide-up">
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <div style={{
             width: '60px',
