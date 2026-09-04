@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, Eye, ExternalLink } from 'lucide-react';
 
 export default function Portfolio({ selectedCategory, onSelectCategory, onSelectProject }) {
-  const tabs = ['All', 'Bakery', 'Clinic', 'Gym', 'Travel', 'Other'];
+  const tabs = ['All', 'Bakery', 'Clinic', 'Salon', 'Gym', 'Real Estate', 'Travel', 'Other'];
 
   const projects = [
     {
@@ -28,15 +28,15 @@ export default function Portfolio({ selectedCategory, onSelectCategory, onSelect
       liveUrl: 'https://advaithospital.vercel.app/'
     },
     {
-      id: 'arya-labs',
-      title: 'Arya Labs',
-      category: 'Diagnostic Laboratory',
-      categoryType: 'Clinic',
-      img: '/assets/project_arya_labs.png',
-      headline: 'Precision You Can Trust. Care You Deserve.',
-      description: 'NABL Accredited Laboratory providing advanced diagnostics, accurate results, and complete range of medical testing facilities.',
-      features: ['NABL Accredited', 'Home Sample Collection', '10,000+ Happy Patients', 'Online Test Reports'],
-      liveUrl: 'https://arya-lab.vercel.app/'
+      id: 'glamme',
+      title: 'Glammé',
+      category: 'Salon & Spa',
+      categoryType: 'Salon',
+      img: '/assets/project_glamme.png',
+      headline: 'More Than A Salon, A Feeling',
+      description: 'Beauty, care & confidence. Expert care with premium products for a more glamorous you. Book online appointment instantly.',
+      features: ['Book Your Look', 'Service Packages', 'Watch Story Showcase', 'Premium Hair & Skin Care'],
+      liveUrl: 'https://glamme.vercel.app/'
     },
     {
       id: 'fitzone',
@@ -50,6 +50,17 @@ export default function Portfolio({ selectedCategory, onSelectCategory, onSelect
       liveUrl: 'https://gym-seven-sable.vercel.app/'
     },
     {
+      id: 'homenest',
+      title: 'HomeNest',
+      category: 'Real Estate Marketplace',
+      categoryType: 'Real Estate',
+      img: '/assets/project_homenest_real.png',
+      headline: "Find a Place You'll Love to Call Home 🏠",
+      description: "India's premier real estate marketplace. Discover a better way to buy, sell or rent properties with trusted agents and modern tools.",
+      features: ['Property Location Search', 'Buy / Rent / Projects', 'Post Property Portal', 'Verified Agents'],
+      liveUrl: 'https://homenest-pi.vercel.app/'
+    },
+    {
       id: 'travelmate',
       title: 'TravelMate',
       category: 'AI Travel Companion',
@@ -59,6 +70,17 @@ export default function Portfolio({ selectedCategory, onSelectCategory, onSelect
       description: 'Your AI travel companion that creates perfect itineraries, personalized for your destination, dates, and budget.',
       features: ['AI Itinerary Generator', 'Explore Destination Places', 'Budget Calculator', 'Solo & Group Trip Planner'],
       liveUrl: 'https://travelmate-rose-psi.vercel.app/'
+    },
+    {
+      id: 'arya-labs',
+      title: 'Arya Labs',
+      category: 'Diagnostic Laboratory',
+      categoryType: 'Clinic',
+      img: '/assets/project_arya_labs.png',
+      headline: 'Precision You Can Trust. Care You Deserve.',
+      description: 'NABL Accredited Laboratory providing advanced diagnostics, accurate results, and complete range of medical testing facilities.',
+      features: ['NABL Accredited', 'Home Sample Collection', '10,000+ Happy Patients', 'Online Test Reports'],
+      liveUrl: 'https://arya-lab.vercel.app/'
     },
     {
       id: 'flappy-wings',
@@ -75,10 +97,7 @@ export default function Portfolio({ selectedCategory, onSelectCategory, onSelect
 
   const filteredProjects = selectedCategory === 'All' 
     ? projects 
-    : projects.filter(p => 
-        p.categoryType.toLowerCase() === selectedCategory.toLowerCase() || 
-        (selectedCategory === 'E-commerce' && p.categoryType === 'Bakery')
-      );
+    : projects.filter(p => p.categoryType.toLowerCase() === selectedCategory.toLowerCase());
 
   return (
     <section id="portfolio" className="projects-section">
@@ -106,7 +125,7 @@ export default function Portfolio({ selectedCategory, onSelectCategory, onSelect
           </div>
 
           <button onClick={() => onSelectCategory('All')} className="btn-outline-pill">
-            <span>View All Projects</span>
+            <span>View All ({projects.length})</span>
             <ArrowRight size={16} />
           </button>
         </div>
