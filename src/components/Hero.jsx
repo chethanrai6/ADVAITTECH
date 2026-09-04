@@ -26,13 +26,6 @@ export default function Hero({ onOpenQuote, onOpenVideo }) {
               <span>Get a Free Quote</span>
               <ArrowRight size={18} />
             </button>
-
-            <button onClick={onOpenVideo} className="btn-secondary-video">
-              <span className="play-icon-circle">
-                <Play size={14} fill="currentColor" />
-              </span>
-              <span>Watch Video</span>
-            </button>
           </div>
 
           {/* Feature Badges Bar */}

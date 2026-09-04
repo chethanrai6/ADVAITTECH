@@ -57,7 +57,7 @@ export default function Footer({ onOpenQuote }) {
             <ul className="contact-info-list">
               <li className="contact-info-item">
                 <Phone size={16} color="#1E65FF" />
-                <a href="tel:+919876543210">+91 98765 43210</a>
+                <a href="tel:+918848389933">+91 88483 89933</a>
               </li>
               <li className="contact-info-item">
                 <Mail size={16} color="#1E65FF" />
@@ -65,7 +65,7 @@ export default function Footer({ onOpenQuote }) {
               </li>
               <li className="contact-info-item">
                 <MapPin size={16} color="#1E65FF" />
-                <span>Kasaragod, Kerala, India</span>
+                <span>Mangalore, Karnataka, India</span>
               </li>
             </ul>
           </div>

@@ -34,9 +34,9 @@ export default function Navbar({ onOpenQuote }) {
 
         {/* Right CTA Area */}
         <div className="header-actions">
-          <a href="tel:+919876543210" className="phone-link">
+          <a href="tel:+918848389933" className="phone-link">
             <Phone size={16} className="phone-icon" />
-            <span>+91 98765 43210</span>
+            <span>+91 88483 89933</span>
           </a>
           <button onClick={onOpenQuote} className="btn-primary">
             <span>Get a Free Quote</span>

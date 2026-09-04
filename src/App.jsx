@@ -28,7 +28,7 @@ export default function App() {
 
   const handleOpenWhatsApp = () => {
     const text = encodeURIComponent("Hi Advait team! I'd like a website for my business.");
-    window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+    window.open(`https://wa.me/918848389933?text=${text}`, '_blank');
   };
 
   return (

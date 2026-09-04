@@ -8,7 +8,7 @@ export default function WhatsAppWidget() {
   const handleSendMessage = (e) => {
     e.preventDefault();
     const encoded = encodeURIComponent(message || "Hi Advait team, I'd like to get a quote for a website!");
-    window.open(`https://wa.me/919876543210?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/918848389933?text=${encoded}`, '_blank');
     setMessage('');
     setIsOpen(false);
   };
