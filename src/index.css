@@ -546,7 +546,14 @@ img {
   gap: 14px;
   overflow-x: auto;
   padding-bottom: 12px;
-  scrollbar-width: thin;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.categories-grid::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .category-card {
@@ -1713,7 +1720,13 @@ html, body {
     overflow-x: auto;
     padding-bottom: 8px;
     flex-wrap: nowrap;
-    scrollbar-width: thin;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .project-tabs::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
   .tab-btn {
     white-space: nowrap;
