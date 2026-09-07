@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ArrowRight, Eye, ExternalLink } from 'lucide-react';
 
 export default function Portfolio({ selectedCategory, onSelectCategory, onSelectProject }) {
@@ -99,6 +99,15 @@ export default function Portfolio({ selectedCategory, onSelectCategory, onSelect
     ? projects 
     : projects.filter(p => p.categoryType.toLowerCase() === selectedCategory.toLowerCase());
 
+  // Ensure newly rendered project cards are instantly animated in when switching tabs
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach((card) => card.classList.add('animate-in'));
+    }, 50);
+    return () => clearTimeout(timer);
+  }, [selectedCategory]);
+
   return (
     <section id="portfolio" className="projects-section">
       <div className="container">
@@ -137,7 +146,7 @@ export default function Portfolio({ selectedCategory, onSelectCategory, onSelect
             return (
               <div 
                 key={project.id} 
-                className={`project-card reveal-zoom ${staggerClass}`}
+                className={`project-card reveal-zoom animate-in ${staggerClass}`}
                 onClick={() => onSelectProject(project)}
               >
                 <div className="project-thumb">
