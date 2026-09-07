@@ -158,38 +158,44 @@ export default function IndustryCategories({ selectedCategory, onSelectCategory,
       {/* Industry Detail Modal */}
       {activeModalIndustry && (
         <div className="modal-backdrop" onClick={() => setActiveModalIndustry(null)}>
-          <div className="modal-card industry-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={() => setActiveModalIndustry(null)}>
+          <div className="modal-content-box industry-modal-card" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close-btn" onClick={() => setActiveModalIndustry(null)} aria-label="Close modal">
               <X size={20} />
             </button>
 
-            <div className="modal-header-badge">
-              <span className="slug-chip">{activeModalIndustry.slug}</span>
+            <div className="modal-header-top flex items-center gap-3" style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div className="industry-icon-wrapper" style={{ width: '48px', height: '48px' }}>
+                {React.createElement(activeModalIndustry.icon, { size: 26 })}
+              </div>
+              <div>
+                <span className="slug-chip">{activeModalIndustry.slug}</span>
+                <span className="modal-tagline-text">{activeModalIndustry.tagline}</span>
+              </div>
             </div>
 
-            <h3 className="modal-title" style={{ marginTop: '8px' }}>
+            <h3 className="modal-title" style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-dark)' }}>
               Custom Websites for {activeModalIndustry.name}
             </h3>
 
-            <p className="modal-description">
+            <p className="modal-description" style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: 1.6, margin: '12px 0 24px' }}>
               {activeModalIndustry.description}
             </p>
 
             <div className="modal-feature-list">
-              <h4 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-dark)', marginBottom: '12px' }}>
+              <h4 style={{ fontSize: '0.9rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.05em', marginBottom: '14px' }}>
                 Key Features Included:
               </h4>
               <div className="feature-checklist-grid">
                 {activeModalIndustry.features.map((feat) => (
                   <div key={feat} className="feature-check-item">
-                    <CheckCircle2 size={16} color="var(--primary)" />
+                    <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0 }} />
                     <span>{feat}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="modal-actions" style={{ marginTop: '24px', display: 'flex', gap: '12px' }}>
+            <div className="modal-actions" style={{ marginTop: '28px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <button 
                 onClick={() => {
                   const targetCat = activeModalIndustry.categoryTag;
@@ -199,6 +205,7 @@ export default function IndustryCategories({ selectedCategory, onSelectCategory,
                   if (portfolioSec) portfolioSec.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="btn-outline-pill"
+                style={{ flex: 1, minWidth: '200px', justifyContent: 'center' }}
               >
                 View {activeModalIndustry.name} Portfolio
               </button>
@@ -208,8 +215,10 @@ export default function IndustryCategories({ selectedCategory, onSelectCategory,
                   onOpenQuote();
                 }}
                 className="btn-primary"
+                style={{ flex: 1, minWidth: '200px', justifyContent: 'center' }}
               >
-                Build {activeModalIndustry.name} Website
+                <span>Build {activeModalIndustry.name} Website</span>
+                <ArrowRight size={16} />
               </button>
             </div>
           </div>

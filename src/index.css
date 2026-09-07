@@ -1508,10 +1508,61 @@ img {
   color: var(--primary);
 }
 
+/* Industry Modal Special Utility Styles */
+.industry-modal-card {
+  max-width: 640px !important;
+  padding: 40px 36px !important;
+}
+
+.slug-chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: monospace;
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-bottom: 2px;
+}
+
+.modal-tagline-text {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.feature-checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 20px;
+  background: #f8fafc;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+}
+
+.feature-check-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+@media (max-width: 600px) {
+  .feature-checklist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Form inputs inside Quote Modal */
 .form-group {
   margin-bottom: 20px;
 }
+
 
 .form-label {
   display: block;
