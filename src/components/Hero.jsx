@@ -1,67 +1,77 @@
 import React from 'react';
-import { Tag, Smartphone, TrendingUp, Headphones, Play, ArrowRight, Users, ShieldCheck, BarChart3 } from 'lucide-react';
+import { ArrowRight, Eye, ShieldCheck, Smartphone, Zap, Search } from 'lucide-react';
 
-export default function Hero({ onOpenQuote, onOpenVideo }) {
+export default function Hero({ onOpenQuote }) {
+  const handleScrollToPortfolio = () => {
+    const portfolioSec = document.getElementById('portfolio');
+    if (portfolioSec) {
+      portfolioSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="hero-section">
       <div className="container hero-grid">
         {/* Left Column Content */}
-        <div className="hero-content">
+        <div className="hero-content reveal-slide-up">
           <div className="hero-tag">
             <span className="hero-tag-dot"></span>
-            <span>Websites for Small Businesses</span>
+            <span>Premium Web Development Agency</span>
           </div>
 
           <h1 className="hero-title">
-            Big Ideas<br />
-            Start with a <span className="blue-highlight">Great Website</span>
+            Your Business Deserves a <span className="blue-highlight">Website That Looks Like a Brand.</span>
           </h1>
 
           <p className="hero-description">
-            At Advait, we create modern, affordable and powerful websites for small businesses — so you can reach more customers and grow faster.
+            We design modern, high-performance websites that help businesses build trust, attract customers and grow online.
           </p>
 
           <div className="hero-ctas">
             <button onClick={onOpenQuote} className="btn-primary">
-              <span>Get a Free Quote</span>
+              <span>Build My Website</span>
               <ArrowRight size={18} />
+            </button>
+            <button onClick={handleScrollToPortfolio} className="btn-outline-pill">
+              <Eye size={18} />
+              <span>View Our Work</span>
             </button>
           </div>
 
-          {/* Feature Badges Bar */}
+          {/* Value / Trust Indicators */}
           <div className="hero-feature-badges">
             <div className="feature-badge-item">
               <div className="feature-badge-icon">
-                <Tag size={16} />
+                <ShieldCheck size={16} />
               </div>
-              <span>Affordable Pricing</span>
+              <span>Modern Design</span>
             </div>
 
             <div className="feature-badge-item">
               <div className="feature-badge-icon">
                 <Smartphone size={16} />
               </div>
-              <span>Mobile Responsive</span>
+              <span>Mobile Friendly</span>
             </div>
 
             <div className="feature-badge-item">
               <div className="feature-badge-icon">
-                <TrendingUp size={16} />
+                <Zap size={16} />
+              </div>
+              <span>Fast Performance</span>
+            </div>
+
+            <div className="feature-badge-item">
+              <div className="feature-badge-icon">
+                <Search size={16} />
               </div>
               <span>SEO Ready</span>
-            </div>
-
-            <div className="feature-badge-item">
-              <div className="feature-badge-icon">
-                <Headphones size={16} />
-              </div>
-              <span>Ongoing Support</span>
             </div>
           </div>
         </div>
 
         {/* Right Column Visual Mockup */}
-        <div className="hero-visual-wrapper">
+        <div className="hero-visual-wrapper reveal-zoom">
           {/* Cursive handwritten annotation with SVG arrow */}
           <div className="hero-handwritten-note">
             <span>Your Business Online Anywhere</span>
@@ -74,44 +84,37 @@ export default function Hero({ onOpenQuote, onOpenVideo }) {
           <div className="hero-mockup-frame">
             <img 
               src="/assets/hero_laptop_mockup.png" 
-              alt="Advait Website Showcase Laptop Mockup" 
+              alt="Modern website design showcase by Advait Tech" 
               className="hero-mockup-img"
             />
           </div>
 
           {/* Yellow Sticky Note */}
           <div className="yellow-sticky-note">
-            A Website Today A Brighter Tomorrow
+            A Website Today. A Brighter Tomorrow.
           </div>
 
           {/* Floating Right Badges */}
           <div className="floating-badges-column">
             <div className="floating-badge-card">
               <div className="badge-icon-blue">
-                <Users size={14} />
-              </div>
-              <span>More Customers</span>
-            </div>
-
-            <div className="floating-badge-card">
-              <div className="badge-icon-blue">
                 <ShieldCheck size={14} />
               </div>
-              <span>Better Brand Image</span>
+              <span>Trust & Credibility</span>
             </div>
 
             <div className="floating-badge-card">
               <div className="badge-icon-blue">
-                <TrendingUp size={14} />
+                <Smartphone size={14} />
               </div>
-              <span>Higher Sales</span>
+              <span>100% Mobile Ready</span>
             </div>
 
             <div className="floating-badge-card">
               <div className="badge-icon-blue">
-                <BarChart3 size={14} />
+                <Zap size={14} />
               </div>
-              <span>Business Growth</span>
+              <span>Ultra Fast Loading</span>
             </div>
           </div>
         </div>

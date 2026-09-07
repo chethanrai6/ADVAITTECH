@@ -1,42 +1,46 @@
 import React from 'react';
-import { Send, ArrowRight, MessageSquare } from 'lucide-react';
+import { ArrowRight, Eye, MessageSquare } from 'lucide-react';
 
 export default function CTABanner({ onOpenQuote, onOpenWhatsApp }) {
+  const handleScrollToPortfolio = () => {
+    const portfolioSec = document.getElementById('portfolio');
+    if (portfolioSec) {
+      portfolioSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="container" style={{ paddingBottom: '80px' }}>
-      <div className="cta-banner reveal-slide-up">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <div style={{
-            width: '60px',
-            height: '60px',
-            borderRadius: '50%',
-            background: 'rgba(255, 255, 255, 0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0
-          }}>
-            <Send size={28} color="#FFFFFF" />
+    <section className="cta-banner-section">
+      <div className="container">
+        <div className="cta-card-wrapper reveal-zoom">
+          <div className="cta-content-box">
+            <span className="cta-badge">GET STARTED TODAY</span>
+            <h2 className="cta-title">Ready to Take Your Business Online?</h2>
+            <p className="cta-subtitle">
+              Let's build a website your customers remember.
+            </p>
+
+            <div className="cta-button-group">
+              <button onClick={onOpenQuote} className="btn-primary-white">
+                <span>Start Your Project</span>
+                <ArrowRight size={18} />
+              </button>
+
+              <button onClick={handleScrollToPortfolio} className="btn-outline-white">
+                <Eye size={18} />
+                <span>View Our Work</span>
+              </button>
+
+              {onOpenWhatsApp && (
+                <button onClick={onOpenWhatsApp} className="btn-whatsapp-cta">
+                  <MessageSquare size={18} />
+                  <span>WhatsApp Us Direct</span>
+                </button>
+              )}
+            </div>
           </div>
-
-          <div className="cta-banner-content">
-            <h2>Ready to Take Your Business Online?</h2>
-            <p>Get a free consultation and the best website solution for your business.</p>
-          </div>
-        </div>
-
-        <div className="cta-buttons">
-          <button onClick={onOpenQuote} className="btn-white">
-            <span>Get a Free Quote</span>
-            <ArrowRight size={18} />
-          </button>
-
-          <button onClick={onOpenWhatsApp} className="btn-whatsapp">
-            <MessageSquare size={18} />
-            <span>Chat on WhatsApp</span>
-          </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

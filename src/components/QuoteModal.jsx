@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle, Sparkles } from 'lucide-react';
+import { X, CheckCircle, Sparkles, Send, MessageSquare } from 'lucide-react';
 
 export default function QuoteModal({ isOpen, onClose, selectedPlan }) {
-  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     businessName: '',
-    businessType: 'Bakery & Food',
-    plan: selectedPlan ? selectedPlan.name : 'Business (₹ 7,999)',
+    businessType: 'Beauty Salon & Spa',
+    plan: selectedPlan ? selectedPlan.name : 'PROFESSIONAL',
     name: '',
     phone: '',
     email: '',
@@ -16,7 +15,7 @@ export default function QuoteModal({ isOpen, onClose, selectedPlan }) {
 
   useEffect(() => {
     if (selectedPlan) {
-      setFormData(prev => ({ ...prev, plan: `${selectedPlan.name} (₹ ${selectedPlan.priceOneTime})` }));
+      setFormData(prev => ({ ...prev, plan: selectedPlan.name }));
     }
   }, [selectedPlan]);
 
@@ -25,53 +24,51 @@ export default function QuoteModal({ isOpen, onClose, selectedPlan }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
+    const text = encodeURIComponent(
+      `*New Project Request - Advait Tech*\n\n` +
+      `*Name:* ${formData.name}\n` +
+      `*Business:* ${formData.businessName}\n` +
+      `*Package Selected:* ${formData.plan}\n` +
+      `*Industry:* ${formData.businessType}\n` +
+      `*Phone:* ${formData.phone}\n` +
+      `*Email:* ${formData.email}`
+    );
+    window.open(`https://wa.me/918848389933?text=${text}`, '_blank');
   };
 
   const handleReset = () => {
     setSubmitted(false);
-    setStep(1);
     onClose();
   };
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal-content-box" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close-btn" onClick={onClose}>
+        <button className="modal-close-btn" onClick={onClose} aria-label="Close modal">
           <X size={20} />
         </button>
 
         {!submitted ? (
           <div>
             <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                background: 'var(--primary-light)',
-                color: 'var(--primary)',
-                padding: '4px 12px',
-                borderRadius: '99px',
-                fontSize: '0.8rem',
-                fontWeight: '700',
-                marginBottom: '8px'
-              }}>
-                <Sparkles size={14} /> Instant Free Quote
+              <div className="modal-badge-pill">
+                <Sparkles size={14} /> Instant Free Proposal
               </div>
-              <h2 style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--text-dark)' }}>
-                Get Your Website Quote
+              <h2 className="modal-heading-title">
+                Start Your Website Project
               </h2>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                Fill out the details below and get a free custom proposal within 2 hours.
+              <p className="modal-subtext">
+                Fill out the details below and get a free custom proposal and scope breakdown within 2 hours.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="modal-form">
               <div className="form-group">
-                <label className="form-label">Your Business Name</label>
+                <label className="form-label">Your Business Name *</label>
                 <input 
                   type="text" 
                   className="form-input"
-                  placeholder="e.g. The Cake Corner"
+                  placeholder="e.g. Royal Bakery & Cafe"
                   required
                   value={formData.businessName}
                   onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
@@ -86,40 +83,40 @@ export default function QuoteModal({ isOpen, onClose, selectedPlan }) {
                     value={formData.businessType}
                     onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
                   >
-                    <option value="Bakery & Food">Bakery & Food</option>
-                    <option value="Restaurant & Cafe">Restaurant & Cafe</option>
-                    <option value="Salon & Beauty">Salon & Beauty</option>
-                    <option value="Clinic & Healthcare">Clinic & Healthcare</option>
-                    <option value="Gym & Fitness">Gym & Fitness</option>
-                    <option value="Retail & Shopping">Retail & Shopping</option>
+                    <option value="Beauty Salon & Spa">Beauty Salon & Spa</option>
+                    <option value="Bakery & Cafe">Bakery & Cafe</option>
+                    <option value="Restaurant & Hotel">Restaurant & Hotel</option>
                     <option value="Real Estate">Real Estate</option>
+                    <option value="Clinic & Healthcare">Clinic & Healthcare</option>
+                    <option value="Automobile & Services">Automobile & Services</option>
+                    <option value="Travel & Tourism">Travel & Tourism</option>
+                    <option value="Fitness & Gym">Fitness & Gym</option>
+                    <option value="Retail & Shopping">Retail & Shopping</option>
                     <option value="Other">Other Business</option>
                   </select>
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Select Package</label>
+                  <label className="form-label">Selected Package</label>
                   <select 
                     className="form-select"
                     value={formData.plan}
                     onChange={(e) => setFormData({ ...formData, plan: e.target.value })}
                   >
-                    <option value="Starter (₹ 4,999)">Starter (₹ 4,999)</option>
-                    <option value="Business (₹ 7,999)">Business (₹ 7,999) - Popular</option>
-                    <option value="Professional (₹ 11,999)">Professional (₹ 11,999)</option>
-                    <option value="E-commerce (₹ 14,999)">E-commerce (₹ 14,999)</option>
-                    <option value="Custom Project">Custom Website Solution</option>
+                    <option value="STARTER">STARTER (₹ 4,999)</option>
+                    <option value="PROFESSIONAL">PROFESSIONAL (₹ 8,999) - Recommended</option>
+                    <option value="CUSTOM">CUSTOM Project Scope</option>
                   </select>
                 </div>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 <div className="form-group">
-                  <label className="form-label">Your Name</label>
+                  <label className="form-label">Your Full Name *</label>
                   <input 
                     type="text" 
                     className="form-input"
-                    placeholder="Full Name"
+                    placeholder="e.g. Rahul Sharma"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -127,7 +124,7 @@ export default function QuoteModal({ isOpen, onClose, selectedPlan }) {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Phone Number (WhatsApp)</label>
+                  <label className="form-label">Phone / WhatsApp *</label>
                   <input 
                     type="tel" 
                     className="form-input"
@@ -140,7 +137,7 @@ export default function QuoteModal({ isOpen, onClose, selectedPlan }) {
               </div>
 
               <div className="form-group">
-                <label className="form-label">Email Address</label>
+                <label className="form-label">Email Address *</label>
                 <input 
                   type="email" 
                   className="form-input"
@@ -151,8 +148,9 @@ export default function QuoteModal({ isOpen, onClose, selectedPlan }) {
                 />
               </div>
 
-              <button type="submit" className="btn-primary" style={{ width: '100%', marginTop: '12px', padding: '14px' }}>
-                Submit & Get Free Quote
+              <button type="submit" className="btn-primary" style={{ width: '100%', marginTop: '12px', padding: '14px', justifyContent: 'center' }}>
+                <span>Submit & Get Free Quote</span>
+                <Send size={16} />
               </button>
             </form>
           </div>
@@ -173,13 +171,13 @@ export default function QuoteModal({ isOpen, onClose, selectedPlan }) {
             </div>
 
             <h3 style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--text-dark)', marginBottom: '8px' }}>
-              Quote Request Received!
+              Project Request Received!
             </h3>
-            <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', marginBottom: '24px', lineHeight: '1.6' }}>
-              Thank you <strong>{formData.name}</strong>! Our team at Advait will prepare a detailed proposal for <strong>{formData.businessName}</strong> and contact you on WhatsApp/Phone shortly.
+            <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', marginBottom: '24px', lineHeight: '1.6' }}>
+              Thank you <strong>{formData.name}</strong>! Our team at Advait Tech will prepare a detailed scope proposal for <strong>{formData.businessName}</strong> and connect with you on WhatsApp/Phone shortly.
             </p>
 
-            <button onClick={handleReset} className="btn-primary" style={{ width: '100%' }}>
+            <button onClick={handleReset} className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
               Done
             </button>
           </div>

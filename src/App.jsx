@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import IndustryCategories from './components/IndustryCategories';
+import BusinessNeed from './components/BusinessNeed';
 import Services from './components/Services';
+import IndustryCategories from './components/IndustryCategories';
 import Portfolio from './components/Portfolio';
 import WhyChooseUs from './components/WhyChooseUs';
+import Process from './components/Process';
 import Pricing from './components/Pricing';
 import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
 import CTABanner from './components/CTABanner';
+import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import WhatsAppWidget from './components/WhatsAppWidget';
 import QuoteModal from './components/QuoteModal';
-import VideoModal from './components/VideoModal';
 import ProjectModal from './components/ProjectModal';
+import PrivacyTermsModal from './components/PrivacyTermsModal';
 
 export default function App() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
 
@@ -47,67 +51,73 @@ export default function App() {
   };
 
   const handleOpenWhatsApp = () => {
-    const text = encodeURIComponent("Hi Advait team! I'd like a website for my business.");
+    const text = encodeURIComponent("Hi Advait Tech! I'd like a website for my business.");
     window.open(`https://wa.me/918848389933?text=${text}`, '_blank');
   };
 
   return (
     <div className="app-container">
-      {/* Navbar */}
+      {/* 1. Navbar */}
       <Navbar onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* Hero Section */}
+      {/* 2. Hero Section (Single H1) */}
       <Hero 
         onOpenQuote={() => setIsQuoteOpen(true)} 
-        onOpenVideo={() => setIsVideoOpen(true)} 
       />
 
-      {/* Industry Categories Carousel */}
-      <IndustryCategories 
-        selectedCategory={selectedCategory} 
-        onSelectCategory={(cat) => {
-          setSelectedCategory(cat);
-          const portfolioSec = document.getElementById('portfolio');
-          if (portfolioSec) {
-            portfolioSec.scrollIntoView({ behavior: 'smooth' });
-          }
-        }} 
-      />
+      {/* 3. Business Need Section */}
+      <BusinessNeed />
 
-      {/* Services Section */}
+      {/* 4. Services Section */}
       <Services 
         onOpenQuote={() => setIsQuoteOpen(true)}
-        onOpenServiceDetail={(srv) => {
-          setIsQuoteOpen(true);
-        }}
       />
 
-      {/* Recent Projects / Portfolio */}
+      {/* 5. Industry Categories */}
+      <IndustryCategories 
+        selectedCategory={selectedCategory} 
+        onSelectCategory={(cat) => setSelectedCategory(cat)}
+        onOpenQuote={() => setIsQuoteOpen(true)}
+      />
+
+      {/* 6. Portfolio / Work Showcase */}
       <Portfolio 
         selectedCategory={selectedCategory}
         onSelectCategory={setSelectedCategory}
         onSelectProject={(project) => setActiveProject(project)}
       />
 
-      {/* Why Choose Advait */}
+      {/* 7. Why Choose Advait */}
       <WhyChooseUs onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* Pricing Plans */}
+      {/* 8. Process Timeline */}
+      <Process />
+
+      {/* 9. Pricing Plans */}
       <Pricing onSelectPlan={handleOpenQuoteWithPlan} />
 
-      {/* Testimonials */}
+      {/* 10. Testimonials */}
       <Testimonials />
 
-      {/* CTA Banner */}
+      {/* 11. FAQ Section */}
+      <FAQ onOpenQuote={() => setIsQuoteOpen(true)} />
+
+      {/* 12. Final CTA Banner */}
       <CTABanner 
         onOpenQuote={() => setIsQuoteOpen(true)}
         onOpenWhatsApp={handleOpenWhatsApp}
       />
 
-      {/* Footer */}
-      <Footer onOpenQuote={() => setIsQuoteOpen(true)} />
+      {/* 13. Contact Section */}
+      <ContactSection />
 
-      {/* Floating WhatsApp Chat Widget */}
+      {/* 15. Footer */}
+      <Footer 
+        onOpenQuote={() => setIsQuoteOpen(true)}
+        onOpenPrivacyModal={() => setIsPrivacyOpen(true)}
+      />
+
+      {/* Floating WhatsApp Action Widget */}
       <WhatsAppWidget />
 
       {/* Modals */}
@@ -117,17 +127,18 @@ export default function App() {
         selectedPlan={selectedPlan}
       />
 
-      <VideoModal 
-        isOpen={isVideoOpen}
-        onClose={() => setIsVideoOpen(false)}
-      />
-
       <ProjectModal 
         project={activeProject}
         onClose={() => setActiveProject(null)}
-        onRequestSimilar={(p) => {
+        onRequestSimilar={() => {
+          setActiveProject(null);
           setIsQuoteOpen(true);
         }}
+      />
+
+      <PrivacyTermsModal 
+        isOpen={isPrivacyOpen}
+        onClose={() => setIsPrivacyOpen(false)}
       />
     </div>
   );

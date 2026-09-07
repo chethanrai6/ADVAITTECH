@@ -1,49 +1,63 @@
 import React, { useState } from 'react';
-import { Phone, Menu, X, ChevronRight } from 'lucide-react';
+import { Phone, Menu, X, ChevronRight, ArrowRight } from 'lucide-react';
 
 export default function Navbar({ onOpenQuote }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { label: 'Home', href: '#home' },
+    { label: 'Services', href: '#services' },
+    { label: 'Industries', href: '#industries' },
+    { label: 'Portfolio', href: '#portfolio' },
+    { label: 'Process', href: '#process' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'About', href: '#why-advait' },
+    { label: 'Contact', href: '#contact' },
+  ];
 
   return (
     <header className="site-header">
       <div className="container header-container">
         {/* Brand Logo */}
-        <a href="#" className="brand-logo">
+        <a href="#home" className="brand-logo" aria-label="Advait Tech Homepage">
           <div className="logo-mark">
-            <img src="/advait_logo.png" alt="Advait Logo" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
+            <img 
+              src="/advait_logo.png" 
+              alt="Advait Tech Logo" 
+              style={{ width: '32px', height: '32px', objectFit: 'contain' }} 
+            />
           </div>
           <div className="logo-text-group">
-            <span className="brand-name">Advait</span>
+            <span className="brand-name">Advait Tech</span>
             <span className="brand-tagline">WE BUILD YOUR NEXT</span>
           </div>
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="main-nav">
-          <a href="#home" className="nav-link active">Home</a>
-          <a href="#services" className="nav-link">Services</a>
-          <a href="#industries" className="nav-link">Industries</a>
-          <a href="#portfolio" className="nav-link">Portfolio</a>
-          <a href="#pricing" className="nav-link">Pricing</a>
-          <a href="#about" className="nav-link">About</a>
-          <a href="#contact" className="nav-link">Contact</a>
+        <nav className="main-nav" aria-label="Main Navigation">
+          {navLinks.map((link) => (
+            <a key={link.label} href={link.href} className="nav-link">
+              {link.label}
+            </a>
+          ))}
         </nav>
 
         {/* Right CTA Area */}
         <div className="header-actions">
-          <a href="tel:+918848389933" className="phone-link">
+          <a href="tel:+918848389933" className="phone-link" aria-label="Call Advait Tech at +91 88483 89933">
             <Phone size={16} className="phone-icon" />
             <span>+91 88483 89933</span>
           </a>
           <button onClick={onOpenQuote} className="btn-primary">
-            <span>Get a Free Quote</span>
+            <span>Start Your Project</span>
+            <ArrowRight size={16} />
           </button>
 
           {/* Mobile Menu Toggle */}
           <button 
             className="mobile-toggle" 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Navigation"
+            aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -53,15 +67,22 @@ export default function Navbar({ onOpenQuote }) {
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div className="mobile-nav-menu container">
-          <a href="#home" onClick={() => setMobileMenuOpen(false)}>Home</a>
-          <a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
-          <a href="#industries" onClick={() => setMobileMenuOpen(false)}>Industries</a>
-          <a href="#portfolio" onClick={() => setMobileMenuOpen(false)}>Portfolio</a>
-          <a href="#pricing" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
-          <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
-          <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
-          <button onClick={() => { setMobileMenuOpen(false); onOpenQuote(); }} className="btn-primary" style={{ width: '100%' }}>
-            Get a Free Quote <ChevronRight size={16} />
+          {navLinks.map((link) => (
+            <a 
+              key={link.label} 
+              href={link.href} 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
+          <button 
+            onClick={() => { setMobileMenuOpen(false); onOpenQuote(); }} 
+            className="btn-primary" 
+            style={{ width: '100%', marginTop: '12px' }}
+          >
+            <span>Start Your Project</span>
+            <ChevronRight size={16} />
           </button>
         </div>
       )}

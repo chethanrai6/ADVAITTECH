@@ -1,161 +1,149 @@
 import React, { useState } from 'react';
-import { Send, Star, Crown, ShoppingBag, Check } from 'lucide-react';
+import { Check, Sparkles, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
 
 export default function Pricing({ onSelectPlan }) {
-  const [billingCycle, setBillingCycle] = useState('one-time'); // 'monthly' | 'one-time'
+  const [billingCycle, setBillingCycle] = useState('oneTime');
 
   const plans = [
     {
       id: 'starter',
-      name: 'Starter',
-      subtitle: 'Perfect for small businesses',
-      icon: Send,
-      priceOneTime: '4,999',
-      priceMonthly: '499',
-      featured: false,
+      name: 'STARTER',
+      tagline: 'For simple business websites',
+      price: billingCycle === 'oneTime' ? '₹4,999' : '₹999/mo',
+      period: billingCycle === 'oneTime' ? 'one-time investment' : 'billed monthly',
+      description: 'Ideal for local shops, individuals, and small businesses getting started online.',
+      highlight: false,
+      badge: null,
       features: [
-        'Up to 5 pages',
-        'Mobile responsive',
-        'Contact form',
-        'WhatsApp integration',
-        'Basic SEO setup',
-        '1 year free hosting'
-      ]
-    },
-    {
-      id: 'business',
-      name: 'Business',
-      subtitle: 'Great for growing businesses',
-      icon: Star,
-      priceOneTime: '7,999',
-      priceMonthly: '799',
-      featured: true,
-      popularTag: 'Most Popular',
-      features: [
-        'Up to 8 pages',
-        'Mobile responsive',
-        'WhatsApp + Call button',
-        'Google Maps integration',
-        'Basic SEO setup',
-        '1 year free hosting',
-        'Free business email'
-      ]
+        '1-3 Custom Designed Pages',
+        '100% Mobile Responsive Layout',
+        'Basic SEO & Meta Configuration',
+        'Contact Form & Direct Phone Links',
+        'WhatsApp Chat Integration',
+        'High Speed Cloud Hosting Setup',
+        '7 Days Post-Launch Support'
+      ],
+      ctaText: 'Start Your Project'
     },
     {
       id: 'professional',
-      name: 'Professional',
-      subtitle: 'For established businesses',
-      icon: Crown,
-      priceOneTime: '11,999',
-      priceMonthly: '1,199',
-      featured: false,
+      name: 'PROFESSIONAL',
+      tagline: 'For businesses that want a complete online presence',
+      price: billingCycle === 'oneTime' ? '₹8,999' : '₹1,999/mo',
+      period: billingCycle === 'oneTime' ? 'one-time investment' : 'billed monthly',
+      description: 'Our most popular package for established companies looking to generate leads.',
+      highlight: true,
+      badge: 'MOST POPULAR',
       features: [
-        'Up to 12 pages',
-        'Advanced design',
-        'WhatsApp + Call button',
-        'Google Maps integration',
-        'On-page SEO',
-        '1 year free hosting',
-        'Free business email',
-        'Support for 3 months'
-      ]
+        'Up to 6-8 Custom Designed Pages',
+        'Premium Custom UI/UX & Animations',
+        'Full On-Page SEO & Schema Markup',
+        'Interactive Service & Industry Modals',
+        'Google Maps & Business Setup',
+        'Speed Optimization (90+ Score)',
+        'Custom Domain Integration',
+        '30 Days Dedicated Support'
+      ],
+      ctaText: 'Start Your Project'
     },
     {
-      id: 'ecommerce',
-      name: 'E-commerce',
-      subtitle: 'Start your online store',
-      icon: ShoppingBag,
-      priceOneTime: '14,999',
-      priceMonthly: '1,499',
-      featured: false,
+      id: 'custom',
+      name: 'CUSTOM',
+      tagline: 'For e-commerce & custom applications',
+      price: 'Let’s Talk',
+      period: 'tailored project scope',
+      description: 'Custom e-commerce stores, appointment portals, and complex web applications.',
+      highlight: false,
+      badge: null,
       features: [
-        'Unlimited products',
-        'Secure payment gateway',
-        'Order management panel',
-        'Invoice & shipping setup',
-        'WhatsApp Integration',
-        'Basic SEO setup',
-        '1 year free hosting',
-        'Support for 3 months'
-      ]
+        'Unlimited Custom Pages & Routing',
+        'E-commerce & Shopping Cart Setup',
+        'Payment Gateway Integration',
+        'Custom Database & API Features',
+        'Advanced Analytics & Tracking',
+        'Priority Technical Maintenance',
+        '60 Days Ongoing Support'
+      ],
+      ctaText: 'Start Your Project'
     }
   ];
 
   return (
     <section id="pricing" className="pricing-section">
       <div className="container">
-        {/* Header & Toggle */}
-        <div className="pricing-header-row reveal-slide-up">
-          <div>
-            <span className="section-tag">SIMPLE PRICING</span>
-            <h2 className="section-heading">Choose the Right Plan for Your Business</h2>
-            <p className="section-subheading">Transparent pricing. No hidden charges.</p>
-          </div>
+        <div className="section-header text-center reveal-slide-up" style={{ marginBottom: '32px' }}>
+          <span className="section-tag">TRANSPARENT PRICING</span>
+          <h2 className="section-heading">Choose the Right Website for Your Business</h2>
+          <p className="section-subheading">
+            Transparent packages designed for businesses of all sizes. No hidden costs, no surprises.
+          </p>
 
-          <div className="pricing-toggle">
+          {/* Billing Cycle Toggle */}
+          <div className="pricing-toggle-bar">
             <button 
-              className={`toggle-option ${billingCycle === 'monthly' ? 'active' : ''}`}
-              onClick={() => setBillingCycle('monthly')}
+              className={`toggle-option-btn ${billingCycle === 'oneTime' ? 'active' : ''}`}
+              onClick={() => setBillingCycle('oneTime')}
             >
-              Monthly
+              One-Time Project
             </button>
             <button 
-              className={`toggle-option ${billingCycle === 'one-time' ? 'active' : ''}`}
-              onClick={() => setBillingCycle('one-time')}
+              className={`toggle-option-btn ${billingCycle === 'monthly' ? 'active' : ''}`}
+              onClick={() => setBillingCycle('monthly')}
             >
-              One Time
+              Managed Monthly
             </button>
           </div>
         </div>
 
         {/* Pricing Cards Grid */}
-        <div className="pricing-grid">
+        <div className="pricing-cards-grid">
           {plans.map((plan, idx) => {
-            const IconComp = plan.icon;
-            const price = billingCycle === 'one-time' ? plan.priceOneTime : plan.priceMonthly;
             const staggerClass = `stagger-${idx + 1}`;
-
             return (
               <div 
-                key={plan.id} 
-                className={`pricing-card reveal-zoom ${staggerClass} ${plan.featured ? 'featured' : ''}`}
+                key={plan.id}
+                className={`pricing-card-box ${plan.highlight ? 'featured-card' : ''} reveal-zoom ${staggerClass}`}
               >
-                {plan.featured && (
-                  <div className="popular-badge">{plan.popularTag}</div>
+                {plan.badge && (
+                  <div className="card-top-badge">
+                    <Sparkles size={13} /> {plan.badge}
+                  </div>
                 )}
 
-                <div>
-                  <div className="plan-icon-header">
-                    <div className="plan-icon-box">
-                      <IconComp size={20} />
-                    </div>
-                    <h3 className="plan-name">{plan.name}</h3>
-                  </div>
-
-                  <p className="plan-subtitle">{plan.subtitle}</p>
+                <div className="pricing-card-header">
+                  <h3 className="plan-title">{plan.name}</h3>
+                  <p className="plan-subtitle-tag">{plan.tagline}</p>
 
                   <div className="plan-price-row">
-                    <span className="price-currency">₹</span>
-                    <span className="price-amount">{price}</span>
-                    <span className="price-gst">+ GST {billingCycle === 'monthly' ? '/mo' : ''}</span>
+                    <span className="plan-price-val">{plan.price}</span>
+                    <span className="plan-price-period">{plan.period}</span>
                   </div>
 
-                  <ul className="plan-features-list">
-                    {plan.features.map((feat, idx) => (
-                      <li key={idx} className="plan-feature-item">
-                        <Check className="check-icon" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="plan-desc-text">{plan.description}</p>
                 </div>
 
-                <button 
-                  onClick={() => onSelectPlan(plan)} 
-                  className="btn-plan"
-                >
-                  Get Started
-                </button>
+                <div className="plan-features-block">
+                  <span className="features-block-label">Includes:</span>
+                  <div className="features-list-group">
+                    {plan.features.map((feat) => (
+                      <div key={feat} className="feature-item-row">
+                        <Check size={16} className="check-icon-blue" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pricing-card-footer">
+                  <button 
+                    onClick={() => onSelectPlan(plan)}
+                    className={plan.highlight ? 'btn-primary' : 'btn-outline-pill'}
+                    style={{ width: '100%', justifyContent: 'center' }}
+                  >
+                    <span>{plan.ctaText}</span>
+                    <ArrowRight size={16} />
+                  </button>
+                </div>
               </div>
             );
           })}
