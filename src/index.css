@@ -3152,45 +3152,55 @@ html, body {
 }
 
 /* ==========================================================================
-   About Advait Tech Section Styles
+   About Advait Tech Section Styles (Redesigned 2-Card Agency Layout)
    ========================================================================== */
 .about-advait-section {
-  padding: 100px 0;
+  padding: 90px 0;
   background: var(--bg-blue-subtle);
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.about-content-box {
+.about-intro-text {
+  max-width: 840px;
+  margin: 0 auto 48px;
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+.about-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.about-agency-card {
   background: #ffffff;
   padding: 40px 36px;
   border-radius: var(--radius-xl);
   border: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
-}
-
-.about-focus-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.about-focus-card {
-  background: #ffffff;
-  padding: 28px 24px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-sm);
   transition: var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.about-focus-card:hover {
+.about-agency-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-md);
   border-color: var(--primary);
 }
 
-.focus-icon-box {
+.about-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.about-card-icon-box {
   width: 48px;
   height: 48px;
   border-radius: 12px;
@@ -3199,52 +3209,69 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  flex-shrink: 0;
 }
 
-.focus-card-title {
-  font-size: 1.1rem;
-  font-weight: 700;
+.about-card-title {
+  font-size: 1.35rem;
+  font-weight: 800;
   color: var(--text-dark);
-  margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
-.focus-card-desc {
-  font-size: 0.88rem;
+.about-card-text {
+  font-size: 0.95rem;
   color: var(--text-body);
-  line-height: 1.55;
+  line-height: 1.65;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.about-benefit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 18px 20px;
+  background: #f8fafc;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+}
+
+.about-benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.benefit-check-icon {
+  color: #10B981;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 @media (max-width: 992px) {
-  .about-text-grid {
-    grid-template-columns: 1fr !important;
-  }
-  
-  .about-focus-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .about-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 
 @media (max-width: 600px) {
-  .about-focus-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .about-content-box {
+  .about-agency-card {
     padding: 28px 20px;
   }
-}
 
-@media (max-width: 992px) {
-  .pricing-cards-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .featured-card {
-    transform: none;
+  .about-intro-text {
+    font-size: 0.96rem;
+    margin-bottom: 32px;
   }
 }
+
 
 
 
