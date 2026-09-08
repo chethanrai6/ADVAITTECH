@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Eye, ShieldCheck, Smartphone, Zap, Search } from 'lucide-react';
+import { ArrowRight, Eye, ShieldCheck, Smartphone, Zap, Search, MessageSquare } from 'lucide-react';
 
 export default function Hero({ onOpenQuote }) {
   const handleScrollToPortfolio = () => {
@@ -9,6 +9,11 @@ export default function Hero({ onOpenQuote }) {
     }
   };
 
+  const handleOpenWhatsApp = () => {
+    const text = encodeURIComponent("Hi Advait Tech! I'd like to get a modern website for my business.");
+    window.open(`https://wa.me/918848389933?text=${text}`, '_blank');
+  };
+
   return (
     <section id="home" className="hero-section">
       <div className="container hero-grid">
@@ -16,25 +21,31 @@ export default function Hero({ onOpenQuote }) {
         <div className="hero-content reveal-slide-up">
           <div className="hero-tag">
             <span className="hero-tag-dot"></span>
-            <span>Premium Web Development Agency</span>
+            <span>Advait Tech — Modern Business Web Development</span>
           </div>
 
           <h1 className="hero-title">
-            Your Business Deserves a <span className="blue-highlight">Website That Looks Like a Brand.</span>
+            Modern Websites That Help <span className="blue-highlight">Local Businesses Grow</span>
           </h1>
 
           <p className="hero-description">
-            We design modern, high-performance websites that help businesses build trust, attract customers and grow online.
+            We design fast, modern, mobile-friendly websites that help local businesses build trust, attract customers, and grow online.
           </p>
 
           <div className="hero-ctas">
             <button onClick={onOpenQuote} className="btn-primary">
-              <span>Build My Website</span>
+              <span>Get Your Website</span>
               <ArrowRight size={18} />
             </button>
+
             <button onClick={handleScrollToPortfolio} className="btn-outline-pill">
               <Eye size={18} />
               <span>View Our Work</span>
+            </button>
+
+            <button onClick={handleOpenWhatsApp} className="btn-whatsapp-pill" aria-label="Chat on WhatsApp">
+              <MessageSquare size={16} />
+              <span>WhatsApp Us</span>
             </button>
           </div>
 
@@ -84,7 +95,7 @@ export default function Hero({ onOpenQuote }) {
           <div className="hero-mockup-frame">
             <img 
               src="/assets/hero_laptop_mockup.png" 
-              alt="Modern website design showcase by Advait Tech" 
+              alt="Modern website design showcase for local businesses by Advait Tech" 
               className="hero-mockup-img"
             />
           </div>

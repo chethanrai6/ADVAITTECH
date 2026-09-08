@@ -5,6 +5,7 @@ import BusinessNeed from './components/BusinessNeed';
 import Services from './components/Services';
 import IndustryCategories from './components/IndustryCategories';
 import Portfolio from './components/Portfolio';
+import AboutAdvait from './components/AboutAdvait';
 import WhyChooseUs from './components/WhyChooseUs';
 import Process from './components/Process';
 import Pricing from './components/Pricing';
@@ -87,28 +88,31 @@ export default function App() {
         onSelectProject={(project) => setActiveProject(project)}
       />
 
-      {/* 7. Why Choose Advait */}
+      {/* 7. About Advait Tech Section */}
+      <AboutAdvait onOpenQuote={() => setIsQuoteOpen(true)} />
+
+      {/* 8. Why Choose Advait */}
       <WhyChooseUs onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* 8. Process Timeline */}
+      {/* 9. Process Timeline */}
       <Process />
 
-      {/* 9. Pricing Plans */}
+      {/* 10. Pricing Plans */}
       <Pricing onSelectPlan={handleOpenQuoteWithPlan} />
 
-      {/* 10. Testimonials */}
+      {/* 11. Testimonials */}
       <Testimonials />
 
-      {/* 11. FAQ Section */}
+      {/* 12. FAQ Section */}
       <FAQ onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* 12. Final CTA Banner */}
+      {/* 13. Final CTA Banner */}
       <CTABanner 
         onOpenQuote={() => setIsQuoteOpen(true)}
         onOpenWhatsApp={handleOpenWhatsApp}
       />
 
-      {/* 13. Contact Section */}
+      {/* 14. Contact Section */}
       <ContactSection />
 
       {/* 15. Footer */}

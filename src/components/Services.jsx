@@ -1,48 +1,48 @@
 import React from 'react';
 import { Globe, ShoppingBag, Target, UserCheck, RefreshCw, Wrench, ArrowRight } from 'lucide-react';
 
-export default function Services({ onOpenQuote, onOpenServiceDetail }) {
+export default function Services({ onOpenQuote }) {
   const services = [
     {
       id: 'business-websites',
       title: 'Business Websites',
       icon: Globe,
-      description: 'Professional websites tailored for local businesses, corporate companies, and service providers looking to build online authority.',
+      description: 'Custom business website development tailored for local companies, corporate brands, and service providers looking to build credibility online.',
       tag: 'Most Popular'
     },
     {
       id: 'ecommerce-websites',
       title: 'E-commerce Websites',
       icon: ShoppingBag,
-      description: 'Custom online stores equipped with product catalogs, shopping carts, secure checkout gateways, and automated inventory tools.',
+      description: 'Online stores engineered with fast product catalogs, direct WhatsApp ordering, secure checkout options, and seamless mobile responsiveness.',
       tag: 'High Conversion'
     },
     {
       id: 'landing-pages',
       title: 'Landing Pages',
       icon: Target,
-      description: 'Focused, ultra-fast landing pages engineered specifically to boost ROI on Google Ads, Meta campaigns, and promotional launches.',
+      description: 'High-converting, ultra-fast landing pages crafted specifically to boost conversion rates on Google Ads, Meta campaigns, and product launches.',
       tag: 'Fast Turnaround'
     },
     {
       id: 'portfolio-websites',
       title: 'Portfolio Websites',
       icon: UserCheck,
-      description: 'Sleek, interactive portfolio showcases that highlight your projects, client feedback, skills, and professional accomplishments.',
+      description: 'Sleek portfolio website design showcasing project work, client reviews, certifications, and achievements for individual professionals and agencies.',
       tag: 'Showcase'
     },
     {
       id: 'website-redesign',
       title: 'Website Redesign',
       icon: RefreshCw,
-      description: 'Modernize outdated websites into high-speed, mobile-responsive, visually stunning web experiences that outshine competitors.',
+      description: 'Transform outdated or slow websites into modern business websites featuring modern layouts, high-speed code, and mobile-friendly usability.',
       tag: 'Upgrade'
     },
     {
       id: 'maintenance-support',
       title: 'Maintenance & Support',
       icon: Wrench,
-      description: 'Continuous technical monitoring, regular backups, security audits, and quick content updates so your website runs glitch-free.',
+      description: 'Reliable ongoing support, technical monitoring, security audits, and quick content updates so your website runs smoothly 24/7.',
       tag: 'Reliable'
     }
   ];
@@ -53,8 +53,8 @@ export default function Services({ onOpenQuote, onOpenServiceDetail }) {
         <div className="section-header text-center reveal-slide-up">
           <span className="section-tag">OUR SERVICES</span>
           <h2 className="section-heading">Everything Your Business Needs Online</h2>
-          <p className="section-subheading">
-            From single-page landing pages to full e-commerce ecosystems, we deliver tailored web development solutions that drive measurable business growth.
+          <p className="section-subheading" style={{ maxWidth: '840px', margin: '0 auto' }}>
+            At Advait Tech, we specialize in affordable website development and modern website design for small businesses. From single-page landing pages to full corporate portals, we build responsive websites that help local businesses grow online.
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export default function Services({ onOpenQuote, onOpenServiceDetail }) {
                       onOpenQuote();
                     }}
                   >
-                    <span>Learn More & Quote</span>
+                    <span>Get a Free Quote</span>
                     <ArrowRight size={16} />
                   </button>
                 </div>
